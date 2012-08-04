@@ -1,0 +1,79 @@
+/*item list start*/
+div.item{
+	position:relative;
+	width:500px;
+	height:70px;;
+	margin-top:10px;
+	box-sizing:content-box;
+	border:1px solid #ddd;
+	margin-left:auto;
+	margin-right:auto;
+	overflow:hidden;
+	border-top-right-radius:20px;
+	border-bottom-right-radius:20px;
+	border-bottom-left-radius:20px;
+}
+div.item > div{
+	float:left;
+	line-height:35px;
+	text-align:left;
+	box-sizing:border-box;
+}
+div.item div.icon{
+	width:100px;
+	height:70px;
+	text-align:right;
+}
+div.item div.icon img{
+	max-height:70px;
+	height:auto;
+	max-width:100px;
+	width:auto;
+	margin:auto;
+}
+div.item div.title{
+	width:400px;
+	height:35px;
+	padding-left:20px;
+	font-weight:bold;
+	text-overflow:ellipsis;
+	overflow:hidden;
+}
+div.item div.title a{
+	text-decoration:none;
+	color:#000;
+
+}
+div.item div.owner{
+	width:200px;
+	height:35px;
+	padding-left:20px;
+	color:#aaa;
+}
+div.item div.price{
+	height:35px;
+	width:200px;
+	text-align:right;
+	padding-right:50px;
+}
+div.item div.triangle{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:0;
+	height:0;
+	border-left: 25px solid red;
+	border-bottom: 25px solid transparent;
+	
+}
+div.item_category0 > div.triangle{
+	border-left-color:#F3CBCB;
+	 
+}
+div.item_category1 > div.triangle{
+	border-left-color:#CBF3D5;
+}
+div.item_category2 > div.triangle{
+	border-left-color:#CBCBF3;
+}
+/*item list ends*/
