@@ -4,6 +4,8 @@ session_start();
 global $p,$f;
 $p = isset($_GET['p']) ? $_GET['p'] : NULL;
 $f = isset($_GET['f']) ? $_GET['f'] : NULL;
+
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
