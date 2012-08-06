@@ -1,0 +1,38 @@
+/* 
+    Document   : item
+    Created on : Aug 6, 2012, 12:11:18 AM
+    Author     : Eren
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.item {
+    padding: 30px;
+    text-align: left;
+    box-sizing: border-box;
+    line-height: 30px;
+}
+
+.item .title{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.item .created_at{
+    text-align: left;
+    font-size: 12px;
+    color: #999;
+}
+
+.item .description{
+    text-align: justify;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding-top: 10px;
+    min-height: 100px;
+    height: auto;
+    max-height: 250px;
+}
+
+.item .user{
+}
