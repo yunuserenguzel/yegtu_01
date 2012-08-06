@@ -15,6 +15,7 @@ $f = isset($_GET['f']) ? $_GET['f'] : NULL;
 <title>Biltrader </title>
 <link href="css/main.css" type="text/css" rel="stylesheet" />
 <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+<script type="text/javascript" src="js/jquery.js"></script>
 </head>
 
 <body>

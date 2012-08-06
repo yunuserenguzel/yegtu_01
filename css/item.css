@@ -14,14 +14,29 @@
 }
 
 .item .title{
+    position: relative;
     font-size: 24px;
     font-weight: bold;
 }
-
+.item .title .triangle{
+	position:absolute;
+	top:-23px;
+	left:-25px;
+	width:0;
+	height:0;
+	border-left: 55px solid #F3CBCB;
+	border-bottom: 55px solid transparent;
+}
 .item .created_at{
     text-align: left;
     font-size: 12px;
     color: #999;
+    width: 100px;
+    float: end;
+}
+.item .price{
+    width: 100px;
+    float: left;
 }
 
 .item .description{
@@ -32,7 +47,32 @@
     min-height: 100px;
     height: auto;
     max-height: 250px;
+    overflow: auto;
+    position: relative;
+    left: -2px;
+    padding-left: 2px;
 }
 
 .item .user{
+    display: none;
+    background-color: #eee;
+    padding: 5px;
+    border-radius: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.item .user .username{
+    font-weight: 700;
+    color: #333;
+    font-size: 20px;
+}
+.item .user .email, .phone{
+    color: #666;
+}
+
+.item input[type="button"]{
+    height: 30px;
+    width: 200px;
+    margin-top: 15px;
 }

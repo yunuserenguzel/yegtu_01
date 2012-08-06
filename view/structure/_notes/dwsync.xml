@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="header.php" server="bilkent.in/public_html/biltrader/" local="129868353600000000" remote="129871201800000000" />
-<file name="left.php" server="bilkent.in/public_html/biltrader/" local="129871186933667900" remote="129871201800000000" />
-<file name="center.php" server="bilkent.in/public_html/biltrader/" local="129868481584811129" remote="129871201800000000" />
+<file name="header.php" server="bilkent.in/public_html/biltrader/" local="129885617544029746" remote="129887626200000000" />
+<file name="left.php" server="bilkent.in/public_html/biltrader/" local="129885595419964322" remote="129887626200000000" />
+<file name="center.php" server="bilkent.in/public_html/biltrader/" local="129885620935373720" remote="129887626200000000" />
+<file name="form.php" server="bilkent.in/public_html/biltrader/" local="129885620466816920" remote="129887626200000000" />
+<file name="item.php" server="bilkent.in/public_html/biltrader/" local="129887622183366037" remote="129887626200000000" />
+<file name="item_list.php" server="bilkent.in/public_html/biltrader/" local="129885610105004258" remote="129887626200000000" />
 </dwsync>
