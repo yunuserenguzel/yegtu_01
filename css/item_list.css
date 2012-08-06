@@ -1,5 +1,5 @@
 /*item list start*/
-div.item{
+div.item_list{
 	position:relative;
 	width:500px;
 	height:70px;;
@@ -13,25 +13,25 @@ div.item{
 	border-bottom-right-radius:20px;
 	border-bottom-left-radius:20px;
 }
-div.item > div{
+div.item_list > div{
 	float:left;
 	line-height:35px;
 	text-align:left;
 	box-sizing:border-box;
 }
-div.item div.icon{
+div.item_list div.icon{
 	width:100px;
 	height:70px;
 	text-align:right;
 }
-div.item div.icon img{
+div.item_list div.icon img{
 	max-height:70px;
 	height:auto;
 	max-width:100px;
 	width:auto;
 	margin:auto;
 }
-div.item div.title{
+div.item_list div.title{
 	width:400px;
 	height:35px;
 	padding-left:20px;
@@ -39,24 +39,24 @@ div.item div.title{
 	text-overflow:ellipsis;
 	overflow:hidden;
 }
-div.item div.title a{
+div.item_list div.title a{
 	text-decoration:none;
 	color:#000;
 
 }
-div.item div.owner{
+div.item_list div.owner{
 	width:200px;
 	height:35px;
 	padding-left:20px;
 	color:#aaa;
 }
-div.item div.price{
+div.item_list div.price{
 	height:35px;
 	width:200px;
 	text-align:right;
 	padding-right:50px;
 }
-div.item div.triangle{
+div.item_list div.triangle{
 	position:absolute;
 	top:0px;
 	left:0px;
