@@ -10,6 +10,7 @@ switch($GLOBALS['p']){
 		include('view/structure/form.php');
 		break;
 	case 'item-list':
+    default:
 		include('view/structure/item_list.php');
 		break;
 }

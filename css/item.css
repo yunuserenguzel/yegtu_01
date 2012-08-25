@@ -31,12 +31,12 @@
     text-align: left;
     font-size: 12px;
     color: #999;
-    width: 100px;
-    float: end;
+    width: 200px;
+    float: none;
 }
 .item .price{
     width: 100px;
-    float: left;
+    float: none;
 }
 
 .item .description{
@@ -75,4 +75,14 @@
     height: 30px;
     width: 200px;
     margin-top: 15px;
+}
+.item_category0 > .triangle{
+    border-left-color:#F3CBCB;
+
+}
+.item_category1 > .triangle{
+    border-left-color:#CBF3D5;
+}
+.item_category2 > .triangle{
+    border-left-color:#CBCBF3;
 }

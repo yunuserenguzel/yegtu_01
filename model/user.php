@@ -23,8 +23,10 @@ class User{
 		
 		}
 	public static function getUser($user_id){
-		$sql = "SELECT * FROM user WHERE user_id=$user_id";
-		return DatabaseConnector::get_single($sql);
+		$sql = "SELECT * FROM `user` WHERE user_id=$user_id";
+		$user =  DatabaseConnector::get_single($sql);
+        echo mysql_error();
+        return $user;
 	}
 	public static function changeInformation($user_id,$name,$surname,$username,$phone,$email){
 		
@@ -96,6 +98,3 @@ class User{
 	
 	
 
-$item_id = User::register('osman','ahmet','mehmet',5063328969,"e@gm");
- 
-print_r(User::getUser($item_id));

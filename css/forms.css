@@ -5,12 +5,13 @@ form table{
 }
 form table td{
     text-align: left;
-    height: 35px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 form table td:first-child{
 
 }
-form table input{
+form table input[type="text"]{
     height: 25px;
     font-size: 16px;
     width: 51ex;
@@ -18,4 +19,29 @@ form table input{
 form table select{
     height: 25px;
     font-size: 16px;
+}
+form table textarea{
+    font-family: inherit;
+    font-size: 16px;
+    width: 51ex;
+}
+form table .submit{
+    height: 35px;
+    border: 0;
+    border-left: 1px solid #999;
+    border-right: 1px solid #999;
+    background: none;
+    border-radius: 15px;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+    min-width: 100px;
+}
+
+form table td.header{
+    font-size: 24px;
+    padding: 20px;
+    padding-left: 0px;
+    font-weight: bold;
+    letter-spacing: 0.2ex;
 }

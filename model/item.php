@@ -1,19 +1,32 @@
 <?php
 
 include_once('DatabaseConnector.php');
-
+include_once('User.php');
 class Item{
 	
 	public static function getItem($item_id){
-		$sql = "SELECT * FROM item WHERE item_id=$item_id";
-		return DatabaseConnector::get_single($sql);
+		$sql = "SELECT  I.*,
+		                O.user_id AS `user_id`,
+                        S.sub_category_id,
+                        C.category_id
+		        FROM item I
+		        INNER JOIN owned_by O ON O.item_id=I.item_id
+                INNER JOIN `in` N ON N.item_id=I.item_id
+                INNER JOIN sub_category S ON S.sub_category_id=N.sub_category_id
+                INNER JOIN under U ON U.sub_category_id=S.sub_category_id
+                INNER JOIN category C ON C.category_id=U.category_id
+		        WHERE I.item_id=$item_id";
+		$item =  DatabaseConnector::get_single($sql);
+        $item->user = User::getUser($item->user_id);
+        return $item;
 	}
 	public static function createItem(
 								$title,
 								$description,
 								$image,
 								$user_id,
-								$sub_category_id
+								$sub_category_id,
+                                $price
 							){
 		$sql = "
 			INSERT INTO item
@@ -21,6 +34,7 @@ class Item{
 				title,
 				description,
 				image,
+				price,
 				available,
 				created_at,
 				view_count
@@ -30,6 +44,7 @@ class Item{
 				'$title',
 				'$description',
 				'$image',
+			    '$price',
 				1,
 				CURRENT_TIMESTAMP,
 				0
@@ -45,10 +60,10 @@ class Item{
 				VALUES
 				('$item_id','$user_id')
 		";
-		DatabseConnector::query($sql);
+		DatabaseConnector::query($sql);
 		
 		$sql = "
-			INSERT INTO in
+			INSERT INTO `in`
 			(item_id,sub_category_id)
 			VALUES
 			($item_id,$sub_category_id)
@@ -120,11 +135,15 @@ class Item{
 	public static function getNewestItems($size,$page){
 		$start = $size*$page;
 		$sql = "
-			SELECT I.*,S.*
+			SELECT I.*,S.*,C.category_id,C.color AS category_color,Us.username AS owner
 			FROM
 				item I
-				INNER JOIN in ON in.item_id=I.item_id
+				INNER JOIN `in` ON `in`.item_id=I.item_id
+				INNER JOIN owned_by O ON O.item_id=I.item_id
+				INNER JOIN user Us ON Us.user_id=O.user_id
 				INNER JOIN sub_category S ON S.sub_category_id=in.sub_category_id
+                INNER JOIN under U ON U.sub_category_id=S.sub_category_id
+                INNER JOIN category C ON C.category_id=U.category_id
 			WHERE
 				I.available=1
 			ORDER BY

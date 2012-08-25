@@ -7,17 +7,8 @@
  * To change this template use File | Settings | File Templates.
  */
 include_once('model/category.php');
-function itemForm($item=null){
-    if($item == null){
-        $item = new stdClass();
-        $item->item_id = null;
-        $item->title = null;
-        $item->category_id = null;
-        $item->sub_category_id = null;
-        $item->item_id = null;
-        $item->item_id = null;
-        $item->item_id = null;
-    }
+function itemForm(){
+
     ?>
         <script type="text/javascript">
             function load_sub_categories(){
@@ -41,9 +32,8 @@ function itemForm($item=null){
                 })
             }
         </script>
-        <form id="item_form">
-            <input type="hidden" name="item_id" value="<?php echo $item->item_id?>" />
-            <input type="hidden" name="action" value="add_edit_item" />
+        <form id="item_form" action="action/item.php" method="POST">
+            <input type="hidden" name="action" value="create_item" />
 
             <table>
                 <tr>
@@ -52,10 +42,10 @@ function itemForm($item=null){
                 <tr>
                     <td>Kategori</td>
                     <td>
-                        <select name="category" id="category" onchange="load_sub_categories()">
+                        <select name="category_id" id="category" onchange="load_sub_categories()">
                             <option value="-1">Lütfen bir kategori seçiniz</option>
                             <?php foreach(category::getCategories() as $c){ ?>
-                            <option value="<?php echo $c->category_id?>" <?php echo $item->category_id == $c->category_id?'selected="selected"':''?>><?php echo $c->name?></option>
+                            <option value="<?php echo $c->category_id?>"><?php echo $c->name?></option>
                             <?php }?>
                         </select>
                     </td>
@@ -63,23 +53,31 @@ function itemForm($item=null){
                 <tr>
                     <td>Alt Kategori</td>
                     <td>
-                        <select name="sub_category" id="sub_category">
-                            <?php if($item->category_id == NULL){?>
+                        <select name="sub_category_id" id="sub_category" disabled="disabled">
                             <option value="-1">Önce kategori seçiniz</option>
-                            <script type="text/javascript">
-                                $("#item_form #sub_category").get(0).disabled = true;
-                            </script>
-                            <?php } else {?>
-                            <?php foreach(category::getSubCategories() as $c){ ?>
-                                <option value="<?php echo $c->sub_category_id?>" <?php echo $item->category_id == $c->category_id?'selected="selected"':''?>><?php echo $c->name?></option>
-                                <?php }?>
-                            <?php } ?>
+
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td>Başlık</td>
-                    <td><input type="text" name="title" value="<?php echo $item->title?>" maxlength="250"  /> </td>
+                    <td><input type="text" name="title" value="" maxlength="250"  /> </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top">Açıklama</td>
+                    <td>
+                        <textarea rows="5" name="description">
+                        </textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Fiyat</td>
+                    <td><input type="text" style="width: 5.5ex;direction: rtl;" name="price" maxlength="5"/>&ensp;TL</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: right;padding-right: 50px;">
+                        <input type="submit" class="submit" value="Ekle"/>
+                    </td>
                 </tr>
             </table>
         </form>
