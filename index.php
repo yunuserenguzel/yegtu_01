@@ -1,6 +1,8 @@
 <?php 
 session_start();
 
+include_once('lib/Util.php');
+include_once('model/DatabaseConnector.php');
 global $p,$f;
 $p = isset($_GET['p']) ? $_GET['p'] : NULL;
 $f = isset($_GET['f']) ? $_GET['f'] : NULL;

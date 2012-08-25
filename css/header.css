@@ -1,0 +1,100 @@
+div#header > div#top{
+    height:95px;
+    border-bottom:1px solid #aaa;
+}
+div#header > div#top > div{
+    float:left;
+    height:100%;
+}
+div#header div#logo{
+    width:215px;
+    border-right:1px solid #ddd;
+    padding-top: 30px;
+    box-sizing: border-box;
+}
+div#header div#logo img{
+    height:auto;
+    margin-top:20px;
+}
+div#header div#reklam{
+    text-align: center;
+    padding-left: 3px ;
+    padding-top: 2px;
+    box-sizing: border-box;
+}
+div#header div#bottom > div{
+    float:left;
+}
+div#header div#bottom > div#menu{
+    width:50%;
+}
+div#header ul#menu, div#header ul#accountMenu{
+    width:100%;
+    margin:auto;
+}
+div#header div#accountMenu {
+    width:50%;
+    text-align:right;
+}
+div#header ul#accountMenu{
+    text-align:right;
+    height:100%;
+}
+div#header ul#accountMenu li{
+    float:right;
+    border-left:1px solid #aaa;
+}
+div#header  li{
+    float:left;
+    width:130px;
+    padding:5px;
+    margin-top:5px;
+    box-sizing:border-box;
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+}
+div#header  ul#menu li{
+    border-right:1px solid #aaa;
+}
+
+div#header ul#menu li:last-child{
+    border-right:none;
+}
+div#header ul#accountMenu li:last-child{
+    border-left:none;
+}
+div#header li a{
+    line-height:25px;
+    display:block;
+    box-sizing:border-box;
+    height:100%;
+    width:90%;
+    font-weight:bold;
+    margin:auto;
+    border-bottom:4px solid #fff;
+    letter-spacing:1px;
+}
+div#header > div#bottom {
+    position: relative;
+    overflow: hidden;
+    height: auto;
+}
+div#header div#add_item_button{
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-top: -18px;
+    margin-left: 10px;
+    line-height: 40px;
+    font-size: 20px;
+    border-left: 1px solid #999;
+    border-right: 1px solid #999;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px;
+}
+div#header div#add_item_button a{
+    text-decoration: none;
+    color: #999;
+}

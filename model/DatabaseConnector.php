@@ -2,8 +2,10 @@
 
 class DatabaseConnector{
 	
-	public static $hostName='',$user='bilkent_root',$password='741285',$database='bilkent_biltrader';
-	private static $isConnected = false;
+//	public static $hostName='',$user='bilkent_root',$password='741285',$database='bilkent_biltrader';
+    public static $hostName='',$user='root',$password='',$database='biltrader';
+
+    private static $isConnected = false;
 	
 	public static function get_results( $sql  ){
 		if(DatabaseConnector::$isConnected == false){

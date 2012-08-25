@@ -31,8 +31,11 @@ $item->price = "30 TL";
         var currentHeight = $('.item .user').height()+10;
         $('.item .user')
             .css({display:"block",height:"0px"})//
-            .animate({height:currentHeight},1000,"swing");
+            .animate({height:currentHeight},500,"swing");
         button.disabled = true;
+    }
+    function showWriteMessage(){
+        
     }
 </script>
    
@@ -50,6 +53,14 @@ $item->price = "30 TL";
         <div class="username"><?php echo $item->user_name; ?></div>
         <div class="phone">tel: <?php echo $item->user_phone; ?></div>
         <div class="email">mail: <?php echo $item->user_email; ?></div>
+    </div>
+    <div class="write_message">
+        <textarea></textarea>
+        <input type="button" />
+    </div>
+    <div class="share_networks">
+        <a href="#">Facebook</a>
+        <a href="#">Twitter</a>
     </div>
 </div>
 

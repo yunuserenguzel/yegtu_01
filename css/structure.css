@@ -1,6 +1,3 @@
-/* CSS Document */
-
-
 html,body{
 	height:100%;
 	text-align:center;
@@ -8,7 +5,7 @@ html,body{
 div#page{
 	height:100%;
 	position:relative;
-	width:900px;
+	width:950px;
 	margin-left:auto;
 	margin-right:auto;
 	border-left:1px solid #aaa;
@@ -17,7 +14,7 @@ div#page{
 	overflow:hidden;
 }
 div#page > div#header{
-	height:125px;
+	height:145px;
 	position:absolute;
 	width:100%;
 	top:0px;
@@ -28,7 +25,7 @@ div#page > div#header{
 }
 div#page > div#content{
 	position:relative;
-	padding-top:125px;
+	padding-top:145px;
 	box-sizing:border-box;
 	height:100%;
 	z-index:0;
@@ -45,79 +42,10 @@ div#page > div#content > div#left{
 
 div#page > div#content > div#center{
 	height:100%;
-	width:675px;
+	width:725px;
 }
 
-div#header > div#top{
-	height:75px;
-	border-bottom:1px solid #aaa;
-}
-div#header > div#top > div{
-	float:left;
-	height:100%;
-}
-div#header div#logo{
-	width:300px;
-	border-right:1px solid #ddd;
-}
-div#header div#logo img{
-	width:90%;
-	height:auto;
-	margin-top:20px;
-}
-div#header div#bottom > div{
-	float:left;
-}
-div#header div#bottom > div#menu{
-	width:50%;
-}
-div#header ul#menu, div#header ul#accountMenu{
-	width:100%;
-	margin:auto;
-}
-div#header div#accountMenu {
-	width:50%;
-	text-align:right;
-}
-div#header ul#accountMenu{
-	text-align:right;
-	height:100%;
-}
-div#header ul#accountMenu li{
-	float:right;
-	border-left:1px solid #aaa;
-}
-div#header  li{
-	float:left;
-	width:130px;
-	padding:5px;
-	margin-top:5px;
-	box-sizing:border-box;
-	text-align:center;
-	margin-left:auto;
-	margin-right:auto;
-}
-div#header  ul#menu li{
-	border-right:1px solid #aaa; 
-}
 
-div#header ul#menu li:last-child{
-	border-right:none;
-}
-div#header ul#accountMenu li:last-child{
-	border-left:none;
-}
-div#header li a{
-	line-height:25px;
-	display:block;
-	box-sizing:border-box;
-	height:100%;
-	width:90%;
-	font-weight:bold;
-	margin:auto;
-	border-bottom:4px solid #fff;
-	letter-spacing:1px;
-}
 div#center{
 	text-align:center;
 	overflow:auto;

@@ -5,7 +5,9 @@
 switch($GLOBALS['f']){
 	case 'login':
 		break;
-	case 'add_item':
+	case 'item':
+        include_once('view/forms/itemForm.php');
+        itemForm();
 		break;
 	case 'update_profile':
 		break;
