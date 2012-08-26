@@ -1,15 +1,17 @@
 <?php 
 session_start();
-error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
+//error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 include_once('lib/Util.php');
 include_once('model/DatabaseConnector.php');
 include_once('model/user.php');
 include_once('model/category.php');
 include_once('model/item.php');
 include_once('model/message.php');
-global $p,$f;
+global $p,$f,$c,$s;
 $p = isset($_GET['p']) ? $_GET['p'] : NULL;
 $f = isset($_GET['f']) ? $_GET['f'] : NULL;
+$c = isset($_GET['c']) ? $_GET['c'] : NULL;
+$s = isset($_GET['s']) ? $_GET['s'] : NULL;
 
 
 ?>
