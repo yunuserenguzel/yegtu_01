@@ -1,7 +1,7 @@
 <?php
 
 include_once('DatabaseConnector.php');
-include_once('User.php');
+include_once('user.php');
 class Item{
 	
 	public static function getItem($item_id){
@@ -76,13 +76,17 @@ class Item{
 	public static function getItemsBySubCategory($sub_category_id,$size,$page,$available=1){
 		$start = $size*$page;
 		$sql = "
-			SELECT I.*
+			SELECT I.*,S.*,C.category_id,C.color AS category_color,Us.username AS owner
 			FROM
 				item I
-				INNER JOIN in ON in.item_id=I.item_id
-				INNER JOIN sub_category S ON S.sub_category_id=in.sub_category_id
+				INNER JOIN `in` ON `in`.item_id=I.item_id
+				INNER JOIN owned_by O ON O.item_id=I.item_id
+				INNER JOIN user Us ON Us.user_id=O.user_id
+				INNER JOIN sub_category S ON S.sub_category_id=`in`.sub_category_id
+                INNER JOIN under U ON U.sub_category_id=S.sub_category_id
+                INNER JOIN category C ON C.category_id=U.category_id
 			WHERE
-				S.sub_category_id=$sub_category_id	
+				S.sub_category_id=$sub_category_id AND
 				I.available=$available
 			ORDER BY
 				I.item_id
@@ -95,15 +99,17 @@ class Item{
 	public static function getItemsByCategory($category_id,$size,$page,$available=1){
 		$start = $size*$page;
 		$sql = "
-			SELECT I.*,S.*
+			SELECT I.*,S.*,C.category_id,C.color AS category_color,Us.username AS owner
 			FROM
 				item I
-				INNER JOIN in ON in.item_id=I.item_id
-				INNER JOIN sub_category S ON S.sub_category_id=in.sub_category_id
-				INNER JOIN under U ON U.sub_category_id=S.sub_category_id
-				INNER JOIN category C ON C.category_id=U.category_id
+				INNER JOIN `in` ON `in`.item_id=I.item_id
+				INNER JOIN owned_by O ON O.item_id=I.item_id
+				INNER JOIN user Us ON Us.user_id=O.user_id
+				INNER JOIN sub_category S ON S.sub_category_id=`in`.sub_category_id
+                INNER JOIN under U ON U.sub_category_id=S.sub_category_id
+                INNER JOIN category C ON C.category_id=U.category_id
 			WHERE
-				C.category_id=$category_id
+				C.category_id=$category_id AND
 				I.available=$available
 			ORDER BY
 				I.item_id DESC
@@ -115,14 +121,17 @@ class Item{
 	public static function getItemsByUser($user_id,$size,$page,$available=1){
 		$start = $size*$page;
 		$sql = "
-			SELECT I.*,S.*
+			SELECT I.*,S.*,C.category_id,C.color AS category_color,Us.username AS owner
 			FROM
 				item I
-				INNER JOIN in ON in.item_id=I.item_id
-				INNER JOIN sub_category S ON S.sub_category_id=in.sub_category_id
+				INNER JOIN `in` ON `in`.item_id=I.item_id
 				INNER JOIN owned_by O ON O.item_id=I.item_id
+				INNER JOIN user Us ON Us.user_id=O.user_id
+				INNER JOIN sub_category S ON S.sub_category_id=`in`.sub_category_id
+                INNER JOIN under U ON U.sub_category_id=S.sub_category_id
+                INNER JOIN category C ON C.category_id=U.category_id
 			WHERE
-				O.user_id=$user_id
+				O.user_id=$user_id AND
 				I.available=$available
 			ORDER BY
 				I.item_id DESC
@@ -141,7 +150,7 @@ class Item{
 				INNER JOIN `in` ON `in`.item_id=I.item_id
 				INNER JOIN owned_by O ON O.item_id=I.item_id
 				INNER JOIN user Us ON Us.user_id=O.user_id
-				INNER JOIN sub_category S ON S.sub_category_id=in.sub_category_id
+				INNER JOIN sub_category S ON S.sub_category_id=`in`.sub_category_id
                 INNER JOIN under U ON U.sub_category_id=S.sub_category_id
                 INNER JOIN category C ON C.category_id=U.category_id
 			WHERE

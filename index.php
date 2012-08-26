@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE);
 include_once('lib/Util.php');
 include_once('model/DatabaseConnector.php');
 include_once('model/user.php');

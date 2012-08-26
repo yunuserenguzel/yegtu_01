@@ -4,9 +4,19 @@ $c = isset($_GET['c'])?$_GET['c']:NULL;
 $s = isset($_GET['s'])?$_GET['s']:NULL;
 
 include_once('view/atomic/item.php');
-$items = Item::getNewestItems(20,0);
+$size = 20;
+$page = 0;
+if($c == NULL && $s == NULL){
+    $items = Item::getNewestItems($size,$page);
+}
+else if($s == NULL){
+    $items = Item::getItemsByCategory($c,$size,$page);
+}
+else{
+    $items = Item::getItemsBySubCategory($s,$size,$page);
+}
 //print_r($items);
-
+echo mysql_error();
 foreach($items as $i){
     if(!isset($i->icon))
         $i->icon = "images/book_gray.png";
