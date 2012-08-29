@@ -18,11 +18,11 @@ class category{
         $category_id =  mysql_insert_id();
         return $category_id;
     }
-    public static function addSubCategory($name,$category_id){
+    public static function addSubCategory($name,$category_id,$image=NULL){
         $name = Util::FilterString($name);
         if(!is_numeric($category_id))
             die("category_id must be numeric");
-        $sql = "INSERT INTO sub_category (name) VALUES ('$name')";
+        $sql = "INSERT INTO sub_category (name,image) VALUES ('$name','$image')";
         DatabaseConnector::query($sql);
         $sub_category_id = mysql_insert_id();
         $sql = "INSERT INTO under (category_id,sub_category_id) VALUES ($category_id,$sub_category_id)";

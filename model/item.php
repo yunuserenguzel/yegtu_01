@@ -8,6 +8,7 @@ class Item{
 		$sql = "SELECT  I.*,
 		                O.user_id AS `user_id`,
                         S.sub_category_id,
+                        S.image AS sub_category_icon,
                         C.category_id
 		        FROM item I
 		        INNER JOIN owned_by O ON O.item_id=I.item_id
@@ -76,7 +77,11 @@ class Item{
 	public static function getItemsBySubCategory($sub_category_id,$size,$page,$available=1){
 		$start = $size*$page;
 		$sql = "
-			SELECT I.*,S.*,C.category_id,C.color AS category_color,Us.username AS owner
+			SELECT  I.*,S.*,
+                C.category_id,
+                C.color AS category_color,
+                Us.username AS owner,
+                S.image AS sub_category_icon
 			FROM
 				item I
 				INNER JOIN `in` ON `in`.item_id=I.item_id
@@ -99,7 +104,11 @@ class Item{
 	public static function getItemsByCategory($category_id,$size,$page,$available=1){
 		$start = $size*$page;
 		$sql = "
-			SELECT I.*,S.*,C.category_id,C.color AS category_color,Us.username AS owner
+			SELECT  I.*,S.*,
+                C.category_id,
+                C.color AS category_color,
+                Us.username AS owner,
+                S.image AS sub_category_icon
 			FROM
 				item I
 				INNER JOIN `in` ON `in`.item_id=I.item_id
@@ -121,7 +130,11 @@ class Item{
 	public static function getItemsByUser($user_id,$size,$page,$available=1){
 		$start = $size*$page;
 		$sql = "
-			SELECT I.*,S.*,C.category_id,C.color AS category_color,Us.username AS owner
+			SELECT  I.*,S.*,
+                C.category_id,
+                C.color AS category_color,
+                Us.username AS owner,
+                S.image AS sub_category_icon
 			FROM
 				item I
 				INNER JOIN `in` ON `in`.item_id=I.item_id
@@ -144,7 +157,11 @@ class Item{
 	public static function getNewestItems($size,$page){
 		$start = $size*$page;
 		$sql = "
-			SELECT I.*,S.*,C.category_id,C.color AS category_color,Us.username AS owner
+			SELECT  I.*,S.*,
+                C.category_id,
+                C.color AS category_color,
+                Us.username AS owner,
+                S.image AS sub_category_icon
 			FROM
 				item I
 				INNER JOIN `in` ON `in`.item_id=I.item_id
