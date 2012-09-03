@@ -1,7 +1,11 @@
 <?php
 global $s,$c,$p;
 switch($p){
+    case 'item':
+
+        break;
     case 'item-list':
+    default:
         if($c != null){
             $sub_categories = category::getSubCategories($GLOBALS['c']);
             ?>
@@ -16,8 +20,15 @@ switch($p){
                 <?php } ?>
             </ul>
             <?php
-        }
+        }    else{
+        ?>
+            <ul class="left_menu menu">
+                <li><a href="?p=item-list&type=latest">En yeni ilanlar</a></li>
+                <li><a href="?p=item-list&type=popular">Öne çıkan ilanlar</a></li>
 
+            </ul>
+        <?php
+        }
         break;
 }
 ?>

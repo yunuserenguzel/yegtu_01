@@ -1,5 +1,6 @@
 <?php
 include_once('../model/user.php');
+include_once('../lib/util.php');
 if(isset($_GET['action'])){
 	
 	switch($_GET['action']){
@@ -33,6 +34,55 @@ else if(isset($_POST['action'])){
 		
 		case 'validate_email':
 			break;
+
+        case 'email_registration':
+            $email = $_POST['email'];
+//            print_r($email);
+            $emailString = $email[0] . '@';
+            switch($email[1]){
+                case 'ug':
+                case 'ie':
+                case 'ctp':
+                case 'bim':
+                case 'bups':
+                case 'bcc':
+                case 'cs':
+                case 'ee':
+                case 'fen':
+                case 'uname':
+                case 'alumni':
+                     $emailString .= $email[1];
+                    break;
+                case '-':
+                    break;
+                default:
+                    header("Location: ../?p=email_register&msg=wrong-domain");
+                    exit(0);
+            }
+            $emailString .= '.bilkent.edu.tr';
+            $passcode = Util::GeneratePasscode();
+
+            $sql = "INSERT INTO email_queue (email,passcode) VALUES ('$emailString','$passcode')";
+            DatabaseConnector::query($sql);
+            if(mysql_errno() == 1062)
+                echo "this e-mail address is already registered";
+            $To = "<$email>";
+            $Subject = "Email Onayi";
+            $Message = "Biltrader+ 'a hoşgeldiniz!<br /><br />
+            Bu e-mail biltrader+'a üye olabilmeniz için gönderilmiştir. <br /><br />
+            Aşağıdaki linke tıklayıp kayıt işleminizi tamamlayabilirsiniz.<br /><br />
+            <a href=\"http://www.bilkentfutbol.com/action/register.php?action=validate_email&email=".urlencode($emailString)."&Validation=$passcode\">Onay Linki</a><br /><br />
+            Teşekkürler.<br/><br/>
+            www.biltrader.net";
+            $Message = str_replace("\n.", "\n..", $Message);
+            $headers = 	'From: Bilkent Futbol <no-reply@bilkentfutbol.com>' . "\n" .
+                'Reply-To: iletisim@bilkentfutbol.com' . "\n" .
+                "MIME-Version: 1.0\n".
+                "Content-type: text/html; charset=utf-8\n".
+                "Content-Transfer-Encoding: 8bit\n".
+                'X-Mailer: PHP/' . phpversion();
+            if(!mail($To,$Subject,$Message,$headers))die('Hata: Mail gonderilemedi.');
+            break;
 			
 	}
 }

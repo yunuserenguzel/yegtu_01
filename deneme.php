@@ -7,24 +7,27 @@
  * To change this template use File | Settings | File Templates.
  */
 
-include_once('model/category.php');
-//category::addSubCategory('Dil',3);
-//category::addSubCategory('Bilgisayar',3);
-//category::addSubCategory('Bilim',3);
-//category::addSubCategory('Ekonomi ve İşletme',3);
-//category::addSubCategory('Mühendislik',3);
-//category::addSubCategory('İnsani Bilimler',3);
-//category::addSubCategory('Diğer',3);
-//
-//category::addSubCategory('Bilgisayar',4);
-//category::addSubCategory('Bilim',4);
-//category::addSubCategory('Ekonomi ve İşletme',4);
-//category::addSubCategory('Mühendislik',4);
-//category::addSubCategory('İnsani Bilimler',4);
-//category::addSubCategory('Diğer',4);
-//
-//category::addSubCategory('Ev & Yurt Arkadaşı',5);
-//category::addSubCategory('Elektronik Eşya',5);
-//category::addSubCategory('Ev Eşyası',5);
-//category::addSubCategory('Taşıt',5);
-//category::addSubCategory('Çeşitli',4);
+//include_once('model/category.php');
+//include_once('lib/Util.php');
+//include_once('model/DatabaseConnector.php');
+//category::addSubCategory('Dil',2,'language.png');
+//category::addSubCategory('Bilgisayar',2,'computer.png');
+//category::addSubCategory('Bilim',2,'science.png');
+//category::addSubCategory('Ekonomi ve İşletme',2,'economics.png');
+//category::addSubCategory('Mühendislik',2,'engineering.png');
+//category::addSubCategory('İnsani Bilimler',2,'human_relations.png');
+//category::addSubCategory('Diğer',2);
+////
+//category::addSubCategory('Dil',1,'language.png');
+//category::addSubCategory('Bilgisayar',1,'computer.png');
+//category::addSubCategory('Bilim',1,'science.png');
+//category::addSubCategory('Ekonomi ve İşletme',1,'economics.png');
+//category::addSubCategory('Mühendislik',1,'engineering.png');
+//category::addSubCategory('İnsani Bilimler',1,'human_relations.png');
+//category::addSubCategory('Diğer',1);
+////
+//category::addSubCategory('Ev & Yurt Arkadaşı',3);
+//category::addSubCategory('Elektronik Eşya',3);
+//category::addSubCategory('Ev Eşyası',3);
+//category::addSubCategory('Taşıt',3);
+//category::addSubCategory('Çeşitli',3);

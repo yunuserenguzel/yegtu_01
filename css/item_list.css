@@ -1,17 +1,27 @@
 /*item list start*/
 div.item_list{
 	position:relative;
-	width:550px;
+    /*top: 1px;*/
+	width:700px;
 	height:70px;;
-	margin-top:10px;
+	/*margin-top:10px;*/
 	box-sizing:content-box;
-	border:1px solid #ddd;
+	border-bottom:1px solid #ddd;
+    /*border-bottom: none;*/
 	margin-left:auto;
 	margin-right:auto;
 	overflow:hidden;
-	border-top-right-radius:20px;
-	border-bottom-right-radius:20px;
-	border-bottom-left-radius:20px;
+	/*border-top-right-radius:5px;*/
+	/*border-bottom-right-radius:5px;*/
+	/*border-bottom-left-radius:5px;*/
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /*opacity: 0.75;*/
+    cursor: pointer;
+}
+div.item_list:hover{
+    opacity: 1;
+    background-color:#ffffe7;
 }
 div.item_list > div{
 	float:left;
@@ -23,6 +33,8 @@ div.item_list div.icon{
 	width:100px;
 	height:70px;
 	text-align:right;
+    padding-top: 4px;
+    margin-right: 30px;
 }
 div.item_list div.icon img{
 	max-height:70px;
@@ -32,12 +44,14 @@ div.item_list div.icon img{
 	margin:auto;
 }
 div.item_list div.title{
-	width:400px;
+	width:550px;
 	height:35px;
 	padding-left:20px;
-	font-weight:bold;
+    font-weight: 600;
 	text-overflow:ellipsis;
 	overflow:hidden;
+    font-size: 18px;
+    letter-spacing: 1px;
 }
 div.item_list div.title a{
 	text-decoration:none;
@@ -45,7 +59,7 @@ div.item_list div.title a{
 
 }
 div.item_list div.owner{
-	width:200px;
+	width:300px;
 	height:35px;
 	padding-left:20px;
 	color:#aaa;
@@ -57,13 +71,13 @@ div.item_list div.price{
 	padding-right:50px;
 }
 div.item_list div.triangle{
-	position:absolute;
-	top:0px;
-	left:0px;
-	width:0;
-	height:0;
-	border-left: 25px solid red;
-	border-bottom: 25px solid transparent;
+	/*position:absolute;*/
+	/*top:0px;*/
+	/*left:0px;*/
+	/*width:0;*/
+	/*height:0;*/
+	/*border-left: 25px solid red;*/
+	/*border-bottom: 25px solid transparent;*/
 	
 }
 div.item_category0 > div.triangle{

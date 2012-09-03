@@ -81,7 +81,7 @@ class Item{
                 C.category_id,
                 C.color AS category_color,
                 Us.username AS owner,
-                S.image AS sub_category_icon
+                CONCAT(C.image_folder,'/',S.image) AS sub_category_icon
 			FROM
 				item I
 				INNER JOIN `in` ON `in`.item_id=I.item_id
@@ -108,7 +108,7 @@ class Item{
                 C.category_id,
                 C.color AS category_color,
                 Us.username AS owner,
-                S.image AS sub_category_icon
+                CONCAT(C.image_folder,'/',S.image) AS sub_category_icon
 			FROM
 				item I
 				INNER JOIN `in` ON `in`.item_id=I.item_id
@@ -134,7 +134,7 @@ class Item{
                 C.category_id,
                 C.color AS category_color,
                 Us.username AS owner,
-                S.image AS sub_category_icon
+                CONCAT(C.image_folder,'/',S.image) AS sub_category_icon
 			FROM
 				item I
 				INNER JOIN `in` ON `in`.item_id=I.item_id
@@ -161,7 +161,7 @@ class Item{
                 C.category_id,
                 C.color AS category_color,
                 Us.username AS owner,
-                S.image AS sub_category_icon
+                CONCAT(C.image_folder,'/',S.image) AS sub_category_icon
 			FROM
 				item I
 				INNER JOIN `in` ON `in`.item_id=I.item_id

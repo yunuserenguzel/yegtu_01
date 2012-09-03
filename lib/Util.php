@@ -7,4 +7,7 @@ class Util{
 		$str = str_replace(">","&gt;",$str);
 		return $str;
 	}
+    public static function GeneratePasscode(){
+        return uniqid("BILTRADER+");
+    }
 } 

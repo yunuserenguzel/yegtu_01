@@ -31,14 +31,14 @@
         <a href="./?p=form&f=item">+ İlan Ekle</a>
     </div>
     <div id="accountMenu">
-    <?php if( /*<[[TEST*/true/*TEST]]>*/ || LoggedUser::IsUserLogged()){?>
+    <?php if( /*<[[TEST*/false/*TEST]]>*/ || LoggedUser::IsUserLogged()){?>
 		<ul id="accountMenu" class="menu">
             <li><a style="border-color:#aaa" href="?p=logout">Çıkış</a></li>
         	<li><a style="border-color:#aaa" href="?p=profile">Profilim</a></li>
         </ul>
     <?php } else {?>
     	<ul id="accountMenu" class="menu">
-        	<li><a style="border-color:#aaa" href="?p=form&f=register">Üye Ol</a></li>
+        	<li><a style="border-color:#aaa" href="?p=form&f=email_register">Üye Ol</a></li>
         	<li><a style="border-color:#aaa" href="?p=form&f=login">Giriş Yap</a></li> 
         </ul>
     <?php } ?>

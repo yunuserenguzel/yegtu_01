@@ -22,6 +22,10 @@ class User{
 		return mysql_insert_id();
 		
 		}
+    public static function registerEmail($email){
+        $sql = "INSERT INTO ";
+        die("User::registerEmail($email) is not implemented yet");
+    }
 	public static function getUser($user_id){
 		$sql = "SELECT * FROM `user` WHERE user_id=$user_id";
 		$user =  DatabaseConnector::get_single($sql);
