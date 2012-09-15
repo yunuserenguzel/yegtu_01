@@ -14,7 +14,7 @@ class DatabaseConnector{
 			DatabaseConnector::$isConnected = true;
 		}
 		if(!$resultset = mysql_query($sql))return false;
-		$results = array();	
+		$results = array();
 		while($row = mysql_fetch_object($resultset))
 			$results[] = $row;
 		return $results;	

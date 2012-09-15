@@ -6,6 +6,7 @@ $s = isset($_GET['s'])?$_GET['s']:NULL;
 include_once('view/atomic/item.php');
 $size = 20;
 $page = 0;
+//$item = [];
 if($c == NULL && $s == NULL){
     $items = Item::getNewestItems($size,$page);
 }
@@ -16,7 +17,6 @@ else{
     $items = Item::getItemsBySubCategory($s,$size,$page);
 }
 //print_r($items);
-echo mysql_error();
 foreach($items as $i){
     if(!isset($i->icon))
         $i->icon = "images/book_gray.png";

@@ -13,4 +13,5 @@ switch($GLOBALS['p']){
     default:
 		include('view/structure/item_list.php');
 		break;
+
 }

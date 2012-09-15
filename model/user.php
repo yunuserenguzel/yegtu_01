@@ -2,22 +2,21 @@
 include_once('DatabaseConnector.php');
 class User{
 	
-	public static function register($name,$surname,$username,$phone,$email){
-		
-		$sql = "INSERT INTO user 
-					(name,
-					surname,
+	public static function register($username,$email,$passhash){
+        $sql = "DELETE FROM `email_queue` WHERE `email`='$email'";
+        DatabaseConnector::query($sql);
+		$sql = "INSERT INTO user (
 					username,
-					phone,
 					email,
-					registered_at) 
-					VALUES 
-					('$name',
-					'$surname',
+                    passhash,
+					registered_at
+                )
+                VALUES (
 					'$username',
-					$phone,
 					'$email',
-					CURRENT_TIMESTAMP)";
+					'$passhash',
+					CURRENT_TIMESTAMP
+                )";
 		DatabaseConnector::query($sql);
 		return mysql_insert_id();
 		
@@ -64,24 +63,21 @@ class User{
 	
 	public static function isUserExist($email){
 		
-		$sql = "SELECT 1 FROM user WHERE email=$email";
-		
+		$sql = "SELECT 1 FROM user WHERE email='$email'";
 		$result = DatabaseConnector::get_value($sql);
-		
-		if(result == 1)
+		if($result == 1)
 			return true;
 		else
 			return false;
 	
 		}
 	
-	public static function passwordCheck($password){
-		
-		$sql = "SELECT 1 FROM user WHERE password=$password";
-		
+	public static function passwordCheck($email,$password){
+
+		$sql = "SELECT 1 FROM user WHERE email='$email' AND passhash='$password'";
 		$result = DatabaseConnector::get_value($sql);
 		
-		if(result == 1)
+		if($result == 1)
 			return true;
 		else
 			return false;
@@ -90,7 +86,7 @@ class User{
 	
 	public static function getUserId($email){
 		
-		$sql = "SELECT user_id FROM user WHERE email=$email";
+		$sql = "SELECT user_id FROM user WHERE email='$email'";
 		
 		$result = DatabaseConnector::get_value($sql);
 		

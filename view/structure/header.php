@@ -27,13 +27,15 @@
         	<li><a style="border-color:#CBCBF3" href="?p=item-list&c=3">Diğer</a></li>
         </ul>
     </div>
-    <div id="add_item_button">
-        <a href="./?p=form&f=item">+ İlan Ekle</a>
-    </div>
+    <?php if(LoggedUser::IsUserLogged()){?>
+        <div id="add_item_button">
+            <a href="./?p=form&f=item">+ İlan Ekle</a>
+        </div>
+    <?php } ?>
     <div id="accountMenu">
-    <?php if( /*<[[TEST*/false/*TEST]]>*/ || LoggedUser::IsUserLogged()){?>
+    <?php if( /*<[[TEST*/false/*TEST]]>*/ || LoggedUser::IsUserLogged() == true){?>
 		<ul id="accountMenu" class="menu">
-            <li><a style="border-color:#aaa" href="?p=logout">Çıkış</a></li>
+            <li><a style="border-color:#aaa" href="action/user.php?action=logout">Çıkış</a></li>
         	<li><a style="border-color:#aaa" href="?p=profile">Profilim</a></li>
         </ul>
     <?php } else {?>

@@ -1,7 +1,6 @@
 <?php
 
 
-
 switch($GLOBALS['f']){
 	case 'login':
         include('view/forms/login.php');

@@ -177,7 +177,8 @@ class Item{
 			LIMIT
 				{$start},{$size}
 		";
-		return DatabaseConnector::get_results($sql);
+		$result =  DatabaseConnector::get_results($sql);
+        return $result;
 	}
 	
 	public static function makeItemUnavailable($item_id,$available=0){

@@ -1,4 +1,5 @@
 <?php
+session_start();
 class LoggedUser{
 	
 	public static function GetUserId(){
@@ -13,7 +14,10 @@ class LoggedUser{
 		$_SESSION['LoggedUser']['Email'] = $user_email;   
 	}
 	public static function IsUserLogged(){
-		return isset($_SESSION['LoggedUser']);
+        $result = false;
+        if(isset($_SESSION['LoggedUser']))
+            $result = true;
+		return $result;
 	}
 	public static function LogOutUser(){
 		unset($_SESSION['LoggedUser']);

@@ -1,38 +1,20 @@
-<form action="action/user.php" method="post">
+<form action="action/user.php" method="post" id="registerForm">
     <input type="hidden" name="action" value="register"/>
-    <table><br>
+    <input type="hidden" name="email" value="<?php echo $_GET['email'];?>"   />
+    <table>
         <tr>
-            <td>First Name</td>
-            <td>:</td>
-            <td><input type="text" name="fname" /></td>
+            <td>Kullanıcı adı</td>
+            <td><input type="text" name="username" /></td>
         </tr>
         <tr>
-            <td>Last Name</td>
-            <td>:</td>
-            <td><input type="text" name="lname" /></td>
+            <td>Şifre</td>
+            <td><input type="password" name="password" /></td>
         </tr>
         <tr>
-            <td>User Name</td>
-            <td>:</td>
-            <td><input type="text" name="uname" /></td>
+            <td>Şifre tekrar</td>
+            <td><input type="password" name="password_retry" /></td>
         </tr>
-        <tr>
-            <td>Password</td>
-            <td>:</td>
-            <td><input type="text" name="password" /></td>
-        </tr>
-        <tr>
-            <td>Email</td>
-            <td>:</td>
-            <td><input type="text" name="email" /></td>
-        </tr>
-        <tr>
-            <td>Phone</td>
-            <td>:</td>
-            <td><input type="text" name="phone" /></td>
-        </tr>
-
-    </table><br>
+    </table>
     <input type="submit" value="Submit" />
 
 </form>

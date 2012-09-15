@@ -1,10 +1,14 @@
 <?php
+session_start();
 include_once('../model/user.php');
 include_once('../lib/Util.php');
+include_once('../lib/LoggedUser.php');
 if(isset($_GET['action'])){
 	
 	switch($_GET['action']){
 		case 'logout':
+            LoggedUser::LogOutUser();
+            header("Location: ../");
 			break;
 	}
 }
@@ -13,23 +17,32 @@ else if(isset($_POST['action'])){
 		
 		case 'login':
 		
-		$email = $_GET['email'];
-		$password = $_GET['password'];
-		if(User::isUserExist($email)){
-			
-			if(User::passwordCheck($password)){
-				
-				$id = User::getUserId($email);
-				
-				LoggedUser::LogInUser($id,$email);
-				
-			}//sifreyi yanlıs girerse kısmı eksik
-			
-		}
-		
+            $email = Util::FilterString($_POST['email']);
+            $password = Util::FilterString($_POST['password']);
+            $passhash = sha1($password);
+            if(User::isUserExist($email) == true){
+                if(User::passwordCheck($email,$passhash) == true){
+                    $id = User::getUserId($email);
+                    LoggedUser::LogInUser($id,$email);
+                    header("Location: ../")       ;
+                }//sifreyi yanlıs girerse kısmı eksik
+
+            }
+
+            echo mysql_error();
 			break;
 		
 		case 'register':
+            $username = Util::FilterString($_POST['username']);
+            $password = Util::FilterString($_POST['password']);
+            $password_retry = Util::FilterString($_POST['password_retry']);
+            $email = Util::FilterString($_POST['email']);
+            $passhash = sha1($password);
+            if($password != $password_retry)
+                die("Sifreler birbiri ile uyumlu olmali");
+            User::register($username,$email,$passhash);
+            header("Location: ../?alert=" . urlencode("Başarı ile kayıt oldunuz giriş yapabilirsiniz."));
+            exit(0);
 			break;
 		
 		case 'validate_email':
@@ -71,7 +84,7 @@ else if(isset($_POST['action'])){
             $Message = "Biltrader+ 'a hoşgeldiniz!<br /><br />
             Bu e-mail biltrader+'a üye olabilmeniz için gönderilmiştir. <br /><br />
             Aşağıdaki linke tıklayıp kayıt işleminizi tamamlayabilirsiniz.<br /><br />
-            <a href=\"http://www.biltrader.net/p=form&f=register?email=".urlencode($emailString)."&Validation=$passcode\">Onay Linki</a><br /><br />
+            <a href=\"http://www.biltrader.net/?p=form&f=register&email=".urlencode($emailString)."&Validation=$passcode\">Onay Linki</a><br /><br />
             Teşekkürler.<br/><br/>
             www.biltrader.net";
             $Message = str_replace("\n.", "\n..", $Message);
