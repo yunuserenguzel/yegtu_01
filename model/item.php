@@ -202,6 +202,10 @@ class Item{
 		$sql = "DELETE FROM item WHERE item_id=$item_id";
 		return DatabaseConnector::query($sql);
 	}
+    public static function incrementViewCount($item_id){
+        $sql = "UPDATE item SET `view_count` = `view_count` + 1 WHERE item_id = $item_id";
+        return DatabaseConnector::query($sql);
+    }
 }
 
 

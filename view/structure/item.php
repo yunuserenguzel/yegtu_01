@@ -12,10 +12,23 @@ if($i == NULL){
     function showItemContactInfo(button){
         isItemContactInfoDisplayed = true;
         var currentHeight = $('.item .user').height()+10;
-        $('.item .user')
-            .css({display:"block",height:"0px"})//
-            .animate({height:currentHeight},500,"swing");
         button.disabled = true;
+        $.ajax({
+            url:"action/item.php",
+            data:{
+                action:"item_viewed",
+                item_id:button.getAttribute("item_id")
+            },
+            method:"GET",
+            success:function(){
+                $('.item .user')
+                    .css({display:"block",height:"0px"})//
+                    .animate({height:currentHeight},500,"swing");
+            },
+            fail:function(){
+                button.disabled = false;
+            }
+        })
     }
     function showWriteMessage(){
         
@@ -28,7 +41,7 @@ if($i == NULL){
     <div class="created_at"><?php echo $item->created_at; ?></div>
     <div class="description"><?php echo $item->description; ?></div>
     <div class="actions">
-        <input class="show_contact_info" type="button" value="İletişim Bilgilerini Göster" onclick="showItemContactInfo(this)" />
+        <input class="show_contact_info" type="button" value="İletişim Bilgilerini Göster" onclick="showItemContactInfo(this)" item_id="<?php $item->item_id; ?>" />
 <!--        <input class="share" type="button" value="Paylaş" />-->
     </div>
     <div class="user">

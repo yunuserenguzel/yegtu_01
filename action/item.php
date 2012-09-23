@@ -6,7 +6,11 @@ include_once('../lib/LoggedUser.php');
 if(isset($_GET['action'])){
 	
 	switch($_GET['action']){
-		
+        case "item_viewed":
+            $item_id = Util::FilterString($_GET['item_id']);
+            Item::incrementViewCount($item_id);
+            echo mysql_error() . '<br/>';
+            print_r(Item::getItem($item_id));
 	}
 }
 else if(isset($_POST['action'])){
