@@ -16,7 +16,6 @@ else if(isset($_POST['action'])){
 	switch($_POST['action']){
 		
 		case 'login':
-		
             $email = Util::FilterString($_POST['email']);
             $password = Util::FilterString($_POST['password']);
             $passhash = sha1($password);
@@ -24,12 +23,12 @@ else if(isset($_POST['action'])){
                 if(User::passwordCheck($email,$passhash) == true){
                     $id = User::getUserId($email);
                     LoggedUser::LogInUser($id,$email);
-                    header("Location: ../")       ;
-                }//sifreyi yanlıs girerse kısmı eksik
-
+                    header("Location: ../");
+                    exit(0);
+                }
             }
-
-            echo mysql_error();
+            header("Location: ../?p=form&f=login&alert=" . urlencode('Kullanıcı adı ya da şifre hatalı!'));
+            exit(0);
 			break;
 		
 		case 'register':
@@ -45,13 +44,11 @@ else if(isset($_POST['action'])){
             exit(0);
 			break;
 		
-		case 'validate_email':
-			break;
-
         case 'email_registration':
+
             $email = $_POST['email'];
 //            print_r($email);
-            $emailString = $email[0] . '@';
+            $emailString = Util::FilterString($email[0]) . '@';
             switch($email[1]){
                 case 'ug':
                 case 'ie':
@@ -64,7 +61,7 @@ else if(isset($_POST['action'])){
                 case 'fen':
                 case 'uname':
                 case 'alumni':
-                     $emailString .= $email[1];
+                     $emailString .= $email[1] . '.';
                     break;
                 case '-':
                     break;
@@ -72,8 +69,12 @@ else if(isset($_POST['action'])){
                     header("Location: ../?p=email_register&msg=wrong-domain");
                     exit(0);
             }
-            $emailString .= '.bilkent.edu.tr';
+            $emailString .= 'bilkent.edu.tr';
             $passcode = Util::GeneratePasscode();
+
+            if(USER::isUserExist($emailString)){
+                header("Location: ../?p=form&f=email_register&alert=" . urlencode("- $emailString - başka bir kullanıcı tarafından kullanılmakta. Lütfen başka bir mail adresi belirleyiniz."));
+            }
 
             $sql = "INSERT INTO email_queue (email,passcode) VALUES ('$emailString','$passcode')";
             DatabaseConnector::query($sql);

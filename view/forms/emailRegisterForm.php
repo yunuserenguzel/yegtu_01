@@ -7,13 +7,21 @@
  * To change this template use File | Settings | File Templates.
  */
 ?>
-<form id="email_register_form" action="action/user.php" method="post">
+<script type="text/javascript">
+    function formCheck(form){
+        if($('#userName').val() == ""){
+            alert("Lütfen mail adresinizi yazınız.");
+            return false;
+        }
+    }
+</script>
+<form id="email_register_form" action="action/user.php" method="post" onsubmit="return formCheck(this)">
 <input type="hidden" name="action" value="email_registration" />
 <table>
     <tr>
         <td>E-mail</td>
         <td>
-            <input type="text" name="email[]" maxlength="30" />
+            <input type="text" name="email[]" id="userName" maxlength="30" />
             &nbsp;@&nbsp;
             <select name="email[]">
                 <option value="ug">ug.bilkent.edu.tr</option>

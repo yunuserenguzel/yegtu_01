@@ -24,6 +24,9 @@ $s = isset($_GET['s']) ? $_GET['s'] : NULL;
 <title>Biltrader </title>
 <link href="css/main.css" type="text/css" rel="stylesheet" />
 <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+<META NAME="DESCRIPTION" CONTENT="Biltrader ile özel ders ilanı ver. Özel ders bul. İkinci el kitap ilanı ver, ikinci el kitap bul.">
+<META NAME="KEYWORDS" CONTENT="biltrader, bilkent trader, bilkent">
+
 <script type="text/javascript" src="js/jquery.js"></script>
 <?php if(isset($_GET['alert'])){?>
     <script type="text/javascript">
