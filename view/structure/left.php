@@ -1,6 +1,16 @@
 <?php
 global $s,$c,$p;
 switch($p){
+    case "profile":
+        ?>
+            <ul class="left_menu menu">
+                <li><a href="#">Şifre Değiştir</a></li>
+            </ul>
+        <?php
+        break;
+    case 'form':
+
+        break;
     case 'item':
 
         break;
@@ -31,4 +41,4 @@ switch($p){
         }
         break;
 }
-?>
+

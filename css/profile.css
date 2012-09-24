@@ -1,0 +1,21 @@
+#my_profile{
+    margin: 30px;
+    letter-spacing: 1px;
+    line-height: 30px;
+}
+
+#my_profile td{
+    padding: 7px;
+}
+#my_profile td:first-child{
+    text-align: right;
+    color: #666;
+}
+#my_profile td:last-child{
+    text-align: left;
+}
+#my_profile input[type="text"]{
+    font-size: inherit;
+    font-family: inherit;
+    letter-spacing: inherit;
+}

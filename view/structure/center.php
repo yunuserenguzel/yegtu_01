@@ -2,6 +2,7 @@
 
 switch($GLOBALS['p']){
 	case 'profile':
+        include('view/structure/profile.php');
 		break;
 	case 'item':
 		include('view/structure/item.php');
